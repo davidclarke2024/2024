@@ -19,16 +19,14 @@ public class lab {
             if (input.equals("q")) {
                 return;
             }
-
+            double a, b, r; // change 1
             if (input.equals("square")) {
-                double a;
                 System.out.println("Enter the length of side a: ");
                 a = Double.parseDouble(scan.nextLine());
                 System.out.println("The circumference of the square is: " + a * 4);
                 System.out.println("The area of the square is: " + a * a);
 
             } else if (input.equals("rectangle")) {
-                double a, b;
                 System.out.println("Enter the length of side a: ");
                 a = Double.parseDouble(scan.nextLine());
                 System.out.println("Enter the length of side b: ");
@@ -36,113 +34,88 @@ public class lab {
                 System.out.println("The circumference of the rectangle is: " + (2 * a + 2 * b));
                 System.out.println("The area of the rectangle is: " + (a * b));
             } else if (input.equals("circle")) {
-                double r;
                 System.out.println("Enter the radius: ");
                 r = Double.parseDouble(scan.nextLine());
                 System.out.println("The circumference of the circle is: " + (Math.PI * r * 2));
                 System.out.println("The area of the circle is: " + (Math.PI * r * r));
-            }
+            } else
+                System.out.println("not a valid input"); // change 2
         }
     }
 
     public static void Q2() {
-        System.out.println("Q2: Enter the current day (1-31): ");
-        int num = Integer.parseInt(scan.nextLine());
-        System.out.println("Enter the current month: (1-12)");
+        System.out.println("Q2: Enter the current month: (1-12)");
         int num2 = Integer.parseInt(scan.nextLine());
+        boolean possible = false;
+        int num = 1;
+        while (!possible) { // change 1
+            System.out.println("Enter the current day: ");
+            num = Integer.parseInt(scan.nextLine());
 
-        if (num == 1)
+            // change 2
+            if (num2 == 4 || num2 == 6 || num2 == 9 || num2 == 11) {
+                if (num > 0 && num <= 30)
+                    possible = true;
+            } else if (num2 == 2) {
+                if (num > 0 && num <= 29)
+                    possible = true;
+            } else if (num == 1 || num == 3 || num == 5 || num == 7 || num == 8 || num == 10 || num == 12) {
+                possible = true;
+            } else {
+                System.out.println("not a valid date");
+            }
+        }
+
+        if (num == 1) // change 3
             System.out.print("You selected 1st of ");
         else if (num == 2)
             System.out.print("You selected 2nd of ");
         else if (num == 3)
             System.out.print("You selected 3rd of ");
-        else if (num == 4)
-            System.out.print("You selected 4th of ");
-        else if (num == 5)
-            System.out.print("You selected 5th of ");
-        else if (num == 6)
-            System.out.print("You selected 6th of ");
-        else if (num == 7)
-            System.out.print("You selected 7th of ");
-        else if (num == 8)
-            System.out.print("You selected 8th of ");
-        else if (num == 9)
-            System.out.print("You selected 9th of ");
-        else if (num == 10)
-            System.out.print("You selected 10th of ");
-        else if (num == 11)
-            System.out.print("You selected 11th of ");
-        else if (num == 12)
-            System.out.print("You selected 12th of ");
-        else if (num == 13)
-            System.out.print("You selected 13th of ");
-        else if (num == 14)
-            System.out.print("You selected 14th of ");
-        else if (num == 15)
-            System.out.print("You selected 15th of ");
-        else if (num == 16)
-            System.out.print("You selected 16th of ");
-        else if (num == 17)
-            System.out.print("You selected 17th of ");
-        else if (num == 18)
-            System.out.print("You selected 18th of ");
-        else if (num == 19)
-            System.out.print("You selected 19th of ");
-        else if (num == 20)
-            System.out.print("You selected 20th of ");
-        else if (num == 21)
-            System.out.print("You selected 21st of ");
-        else if (num == 22)
-            System.out.print("You selected 22nd of ");
-        else if (num == 23)
-            System.out.print("You selected 23rd of ");
-        else if (num == 24)
-            System.out.print("You selected 24th of ");
-        else if (num == 25)
-            System.out.print("You selected 25th of ");
-        else if (num == 26)
-            System.out.print("You selected 26th of ");
-        else if (num == 27)
-            System.out.print("You selected 27th of ");
-        else if (num == 28)
-            System.out.print("You selected 28th of ");
-        else if (num == 29)
-            System.out.print("You selected 29th of ");
-        else if (num == 30)
-            System.out.print("You selected 30th of ");
-        else if (num == 31)
-            System.out.print("You selected 31st of ");
-        else {
+        else if (num > 3)
+            System.out.print("You selected " + num + "th of ");
+        else
             System.out.println("Invalid day");
-        }
 
-        if (num2 == 1) {
-            System.out.println("January");
-        } else if (num2 == 2) {
-            System.out.println("February");
-        } else if (num2 == 3) {
-            System.out.println("March");
-        } else if (num2 == 4) {
-            System.out.println("April");
-        } else if (num2 == 5) {
-            System.out.println("May");
-        } else if (num2 == 6) {
-            System.out.println("June");
-        } else if (num2 == 7) {
-            System.out.println("July");
-        } else if (num2 == 8) {
-            System.out.println("Augst");
-        } else if (num2 == 9) {
-            System.out.println("September");
-        } else if (num2 == 10) {
-            System.out.println("October");
-        } else if (num2 == 11) {
-            System.out.println("November");
-        } else if (num2 == 12) {
-            System.out.println("December");
-        } else {
-            System.out.println("Invalid month");
+        switch (num2) { // change 4
+            case 1:
+                System.out.println("January");
+                break;
+            case 2:
+                System.out.println("February");
+                break;
+            case 3:
+                System.out.println("March");
+                break;
+            case 4:
+                System.out.println("April");
+                break;
+            case 5:
+                System.out.println("May");
+                break;
+            case 6:
+                System.out.println("June");
+                break;
+            case 7:
+                System.out.println("July");
+                break;
+            case 8:
+                System.out.println("August");
+                break;
+            case 9:
+                System.out.println("September");
+                break;
+            case 10:
+                System.out.println("October");
+                break;
+            case 11:
+                System.out.println("November");
+                break;
+            case 12:
+                System.out.println("December");
+                break;
+            default:
+                System.out.println("Invalid month");
         }
     }
 
@@ -177,19 +150,20 @@ public class lab {
 
         String next;
         System.out.println(
-                "Q4: Let's play a game. Type \"A\" to attack, \"B\" to buff your next attack. Kill the enemy to win!");
+                "Q4: Let's play a game. Type \"A\" to attack, \"B\" to buff your next attack, \"C\" to search for a better weapon. Kill the enemy to win!");
         System.out.println(
                 "Q4: You must roll higher than the enemy armor class (12) to hit. Roll 20 for a critical hit!");
         System.out.println("Q4: Your damage is 2-16 (2d8)");
 
         int enemyHP = 100;
         int a = 0;
-
+        boolean weapon = false;
         boolean check = false;
         while (true) {
 
             boolean doAttack = false;
             boolean check2 = false;
+            boolean search = false; // change 1
             while (!check2) {
                 next = scan.nextLine();
                 check2 = true;
@@ -201,12 +175,22 @@ public class lab {
                         check = true;
                         System.out.println("Buffing! +5 to your next attack roll and damage");
                         break;
+                    case "C", "c":
+                        search = true;
+                        break;
                     default:
                         System.out.println("Invalid input");
                         check2 = false;
                 }
             }
-
+            if (search) { // change 2
+                int luck = rng.nextInt(0, 20);
+                if (luck > 18) {
+                    System.out.println("You found a better weapon! Damage is permanently doubled!");
+                    weapon = true;
+                } else
+                    System.out.println("You could not find a weapon this time!");
+            }
             if (doAttack) {
                 a++;
                 int attackRoll = rng.nextInt(20) + 1;
@@ -231,6 +215,9 @@ public class lab {
                     System.out.print("You dealt " + damage + " damage");
                     if (check) {
                         System.out.print(" (buffed attack)");
+                    }
+                    if (weapon) {
+                        damage = damage * 2;
                     }
                     enemyHP -= damage;
                     System.out.println("\nEnemy HP: " + Math.max(0, enemyHP));
